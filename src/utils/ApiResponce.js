@@ -6,3 +6,5 @@ class ApiResponce {
     this.success = statudcode < 400;
   }
 }
+
+export { ApiResponce };
