@@ -5,6 +5,7 @@ import {
   loginUser,
   logoutuser,
   getdata,
+  refreshAccessToken,
 } from "../controllers/user.controller.js";
 import { varifyJWT } from "../middlewares/auth.middleware.js";
 
@@ -29,6 +30,10 @@ router.route("/login").post(loginUser);
 // secures route
 
 router.route("/logout").post(varifyJWT, logoutuser);
+
+//refresh accesstoken
+
+router.route("/refreshtoken", refreshAccessToken);
 
 //get all data
 
