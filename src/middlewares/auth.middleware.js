@@ -21,7 +21,6 @@ export const varifyJWT = asyncHandler(async (req, _, next) => {
     );
 
     if (!user) {
-      // disscuss about frontend
       throw new ApiError(401, "Invalid access token");
     }
 
