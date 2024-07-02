@@ -174,8 +174,8 @@ const logoutuser = asyncHandler(async (req, res) => {
   await User.findByIdAndUpdate(
     req.user._id,
     {
-      $set: {
-        refreshToken: undefined,
+      $unset: {
+        refreshToken: 1,
       },
     },
     {
@@ -315,7 +315,7 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
     throw new ApiError(400, "Error while uploadin on avatar");
   }
 
-  await User.findByIdAndUpdate(
+  const user = await User.findByIdAndUpdate(
     req.user?._id,
     {
       $set: {
@@ -414,7 +414,7 @@ const getUserChannelProfile = asyncHandler(async (req, res) => {
         fullname: 1,
         username: 1,
         subscribersCount: 1,
-        channelSubcribedToCount,
+        channelSubcribedToCount: 1,
         isSubscribed: 1,
         avatar: 1,
         coverImage: 1,

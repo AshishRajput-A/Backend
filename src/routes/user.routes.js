@@ -38,7 +38,7 @@ router.route("/login").post(loginUser);
 router.route("/logout").post(varifyJWT, logoutuser);
 
 //refresh accesstoken
-router.route("/refreshtoken", refreshAccessToken);
+router.route("/refreshtoken").post(varifyJWT, refreshAccessToken);
 
 //get all data
 router.route("/getdata").get(getdata);
